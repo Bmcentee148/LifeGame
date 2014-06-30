@@ -8,10 +8,12 @@ SPECIFICATIONS:
 	A text file will initially be read. The first line of the file will contain
 	this information sequentially: number of generations, number of rows, number of columns.
 
-	A grid with the given number of rows and columns will be created. The number of generations will be noted because this is the amount of times we want the grid to change.
+	A grid with the given number of rows and columns will be created. The number of generations
+	will be noted because this is the amount of times we want the grid to change.
 
 	The remaining lines of the text file will be a sample grid with the initial cell
-	states. The file will denote 'off' with '-' and on with '#'. The grid we created will be initialized with these values.
+	states. The file will denote 'off' with '-' and on with '#'. The grid we created will
+	be initialized with these values.
 
 	For each generation, the cells will simutaneously respond to the given state of the grid
 	based on the following rules:
@@ -20,18 +22,23 @@ SPECIFICATIONS:
 		2. If a cell has less than two of its neighbors "on" then the cell will turn "off."
 		3. If a cell has more than three of its neighbors "on" then the cell will turn "off."
 
-	The resulting grid, after each generation is completed, will be printed out denoting the state of the cells in the same manner as the input text file.
+	The resulting grid, after each generation is completed, will be printed out denoting the 
+	state of the cells in the same manner as the input text file.
 ==============================================================================================
 
 	The main classes for the program will be the Cell class and the CellGrid class.
 
 		Cell will be responsible for knowing the state of the cell, for being able to 
-		express its state as the appropriate character, and for being able to update itself given a number or neighbors.
+		express its state as the appropriate character, and for being able to update itself given
+		a number or neighbors.
 
 		CellGrid will be responsible for holding a given number of Cell objects in a grid.
-		It will be able to determine the number of neighbors for any given cell and communicate this to the Cell object. 
+		It will be able to determine the number of neighbors for any given cell and communicate 
+		this to the Cell object. 
 
-		A class will then be created to create instances of each of these classes based on the input text file and will run the simulation. The final result will be displayed to the user in the console. 
+		A class will then be created to create instances of each of these classes based on the input 
+		text file and will run the simulation. The final result will be displayed to the user in the
+		console. 
 
 		NOTE: The input text file should be given to the program in the command line at run time. 
 
