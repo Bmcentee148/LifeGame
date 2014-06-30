@@ -1,0 +1,20 @@
+LifeGame
+========
+
+Conway's Game Of Life Simulation
+
+This program MUST:
+
+1. Create a cellular grid given the number of rows and columns.
+2. Initialize its state given a sample grid from a text file.
+3. Update the state of each cell simutaneously for each generation,
+	 based on the given rules.
+4. Output the final result in the same format as the input grid.
+5. Allow for the rules to 'wrap around' the grid.
+	i.e. the neighbors for cells on the edge of the grid 
+		 also appear on alternate sides of the grid.
+
+		 
+
+
+
