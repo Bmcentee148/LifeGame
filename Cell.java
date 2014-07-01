@@ -29,6 +29,10 @@ class Cell{
 		}
 	}
 
+	public void setStatus(boolean status){
+		this.status = status;
+	}
+
 	public int getRow(){
 		return row;
 	}
