@@ -43,4 +43,3 @@ SPECIFICATIONS:
 		NOTE: The input text file should be given to the program in the command line at run time. 
 
 
-Giggity
