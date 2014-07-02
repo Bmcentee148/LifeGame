@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 import java.util.Scanner;
-
+import java.nio.charset.Charset;
 class Life{
 
 	public static void main(String [] args){
@@ -19,6 +19,8 @@ class Life{
 
 		try{
 			File file = new File(fileName);
+			BufferedReader reader = new BufferedReader(
+				new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8")));
 			Scanner inputFile = new Scanner(file);
 
 			int numGens, numRows, numCols;
