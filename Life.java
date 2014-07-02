@@ -18,35 +18,12 @@ class Life{
 		}
 
 		try{
-			File file = new File(fileName);
-			BufferedReader reader = new BufferedReader(
-				new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8")));
-			Scanner inputFile = new Scanner(file);
-
-			int numGens, numRows, numCols;
-
-			while(inputFile.hasNext()){
-				numGens = inputFile.nextInt();
-				numRows = inputFile.nextInt();
-				numCols = inputFile.nextInt();
-
-				initArray = new Cell[numRows][numCols];
-				for(int i = 0; i < numRows; i++){
-					for (int j = 0; j< numCols; j++){
-						byte temp = inputFile.nextByte();
-						currChar = (char)temp;
-						String charString = Character.toString(currChar);
-						if(charString.equals("#")){
-							initArray[i][j].setStatus(true);
-						}
-						else{
-							initArray[i][j].setStatus(false);
-						}
-					}
-				}
-			}
+			initArray = readFile(fileName);
 		}
 		catch(FileNotFoundException e){
+			System.out.println(e.toString());
+		}
+		catch(IOException e){
 			System.out.println(e.toString());
 		}
 
@@ -54,4 +31,43 @@ class Life{
 		gameGrid.displayGrid();
 
 	}
+
+	public static Cell[][] readFile(String fileName) throws IOException{
+		Cell[][] initArray;
+		File file = new File(fileName);
+		String tempLine;
+		char currChar;
+
+		Scanner inputFile = new Scanner(file);
+
+		int numGens, numRows, numCols;
+
+		numGens = inputFile.nextInt();
+		numRows = inputFile.nextInt();
+		numCols = inputFile.nextInt();
+		inputFile.nextLine();
+		initArray = new Cell[numRows][numCols];
+		
+			
+		for(int i = 0; i < numRows; i++){
+			tempLine = inputFile.nextLine();
+			for (int j = 0; j< numCols; j++){
+					Cell newCell = new Cell();
+					initArray[i][j] = newCell;
+					currChar = tempLine.charAt(j);
+					String charString = Character.toString(currChar);
+					if(charString.equals("#")){
+						initArray[i][j].setStatus(true);
+					}
+					else{
+						initArray[i][j].setStatus(false);
+					}
+				}
+			
+		}
+		inputFile.close();
+		return initArray;
+		
+	}
+
 }

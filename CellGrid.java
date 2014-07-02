@@ -2,20 +2,8 @@ class CellGrid{
 
 	private Cell [][] cellArray;
 
-	public CellGrid(){
-		cellArray = new Cell[10][10];
-	}
-
 	public CellGrid(Cell [][] cellArray){
 		this.setGrid(cellArray);
-	}
-
-    public CellGrid(CellGrid tempGrid){
-        this.setGrid(tempGrid.getCellArray());
-    }
-
-	public void setDimensions(int rows, int cols){
-		this.cellArray = new Cell[rows][cols];
 	}
 
 	private void setGrid(Cell [][] cellArray){
@@ -32,9 +20,8 @@ class CellGrid{
     }
 
 
-    public int getNeighbors(Cell currCell){
-        int currRow = currCell.getRow();
-        int currCol = currCell.getCol();
+    public int getNeighbors(int currRow, int currCol){
+        
         
         int tp = -1, bt = -1 , lf = -1, rt = -1;
         

@@ -4,12 +4,14 @@ class Cell{
 	private static boolean ON = true;
 
 	private boolean status;
-	private int row, col;
+	
+	public Cell(){
+		status = OFF;
+	}
 
-	public Cell(boolean initStatus,int row, int col){
+	public Cell(boolean initStatus){
 		this.status = initStatus;
-		this.row = row;
-		this.col = col;
+		
 	}
 
 	public Cell(Cell copyCell){
@@ -33,13 +35,7 @@ class Cell{
 		this.status = status;
 	}
 
-	public int getRow(){
-		return row;
-	}
-
-	public int getCol(){
-		return col;
-	}
+	
 
 	public void display(){
 		if(this.status == OFF)
