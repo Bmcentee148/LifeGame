@@ -24,10 +24,14 @@ class Cell{
 
 
 	public void changeStatus(int numNeighbors){
-		if(numNeighbors < 2 || numNeighbors > 3)
+		if(this.status == OFF && numNeighbors == 3){
+			this.status = ON;
+		}
+		else if(this.status == ON && numNeighbors < 2){
 			this.status = OFF;
-		else if(numNeighbors == 3){
-			this.status = true;
+		}
+		else if(this.status == ON && numNeighbors > 3){
+			this.status = OFF;
 		}
 	}
 

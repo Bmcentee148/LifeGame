@@ -70,13 +70,22 @@ class CellGrid{
 		}
 	}
 
-    public CellGrid update(CellGrid prevState){
+    public void displayGrid2(){
+        for(int i = 0; i< cellArray.length; i++){
+            if(i != 0) System.out.println("");
+            for(int j = 0; j< cellArray[i].length; j++){
+                System.out.print(this.getNeighbors(i,j));
+            }
+        }
+    }
+
+    public void update(CellGrid prevState){
         Cell [][] prevStateArray = prevState.getCellArray();
         for(int i = 0; i< prevStateArray.length; i++){
             for(int j = 0; j< prevStateArray[i].length; j++){
                 cellArray[i][j].changeStatus(prevState.getNeighbors(i,j));
             }
         }
-        return this;
+        //return this;
     }
 }

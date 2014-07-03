@@ -31,21 +31,24 @@ class Life{
 			System.out.println(e.toString());
 		}
 
+		
 		CellGrid gameGrid_1 = new CellGrid(initArray);
-		//gameGrid_1.displayGrid();
-		//System.out.println("\n==========");
 		CellGrid gameGrid_2 = new CellGrid(gameGrid_1);
-		//gameGrid_2.displayGrid();
+		
 
-		for(int i = 0; i< NUM_GENS ; i++){
-			
-			if( i % 2 == 0 && i !=1){
-				gameGrid_2 = gameGrid_2.update(gameGrid_1);
+		for(int i = 2; i< NUM_GENS + 2; i++){
+		
+			if( i % 2 == 0 ){
+				gameGrid_2.update(gameGrid_1);
 				gameGrid_2.displayGrid();
+				System.out.println("\n==========");
+				gameGrid_2.displayGrid2();
 			}
 			else{
-				gameGrid_1 = gameGrid_1.update(gameGrid_2);
+				gameGrid_1.update(gameGrid_2);
 				gameGrid_1.displayGrid();
+				System.out.println("\n==========");
+				gameGrid_1.displayGrid2();
 			}
 
 			System.out.println("\n==========");
@@ -64,7 +67,7 @@ class Life{
 
 		Scanner inputFile = new Scanner(file);
 
-		//int NUM_GENS, NUM_ROWS, NUM_COLS;
+		
 
 		NUM_GENS = inputFile.nextInt();
 		NUM_ROWS = inputFile.nextInt();
