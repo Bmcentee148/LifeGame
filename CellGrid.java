@@ -6,13 +6,17 @@ class CellGrid{
 		this.setGrid(cellArray);
 	}
 
+    public CellGrid(CellGrid copyGrid){
+        this.setGrid(copyGrid.getCellArray());
+    }
+
 	private void setGrid(Cell [][] cellArray){
 		this.cellArray = new Cell [cellArray.length][cellArray[0].length];
 		for(int i = 0; i< cellArray.length; i++){
 			for(int j = 0; j < cellArray[i].length; j++){
 				this.cellArray[i][j] = new Cell(cellArray[i][j]);
 			}
-		}
+		} 
 	}
 
     private Cell [][] getCellArray(){
@@ -65,4 +69,14 @@ class CellGrid{
 			}
 		}
 	}
+
+    public CellGrid update(CellGrid prevState){
+        Cell [][] prevStateArray = prevState.getCellArray();
+        for(int i = 0; i< prevStateArray.length; i++){
+            for(int j = 0; j< prevStateArray[i].length; j++){
+                cellArray[i][j].changeStatus(prevState.getNeighbors(i,j));
+            }
+        }
+        return this;
+    }
 }

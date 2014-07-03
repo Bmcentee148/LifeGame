@@ -2,13 +2,17 @@ import java.util.*;
 import java.io.*;
 import java.util.Scanner;
 import java.nio.charset.Charset;
+
 class Life{
+	public static int NUM_ROWS;
+	public static int NUM_COLS;
+	public static int NUM_GENS;
 
 	public static void main(String [] args){
 		
 		String fileName = "";
-		char currChar;
 		Cell [][] initArray = null;
+
 		if(args.length != 0){
 			fileName = args[0];
 		}
@@ -27,8 +31,28 @@ class Life{
 			System.out.println(e.toString());
 		}
 
-		CellGrid gameGrid = new CellGrid(initArray);
-		gameGrid.displayGrid();
+		CellGrid gameGrid_1 = new CellGrid(initArray);
+		//gameGrid_1.displayGrid();
+		//System.out.println("\n==========");
+		CellGrid gameGrid_2 = new CellGrid(gameGrid_1);
+		//gameGrid_2.displayGrid();
+
+		for(int i = 0; i< NUM_GENS ; i++){
+			
+			if( i % 2 == 0 && i !=1){
+				gameGrid_2 = gameGrid_2.update(gameGrid_1);
+				gameGrid_2.displayGrid();
+			}
+			else{
+				gameGrid_1 = gameGrid_1.update(gameGrid_2);
+				gameGrid_1.displayGrid();
+			}
+
+			System.out.println("\n==========");
+
+		}
+
+
 
 	}
 
@@ -40,18 +64,18 @@ class Life{
 
 		Scanner inputFile = new Scanner(file);
 
-		int numGens, numRows, numCols;
+		//int NUM_GENS, NUM_ROWS, NUM_COLS;
 
-		numGens = inputFile.nextInt();
-		numRows = inputFile.nextInt();
-		numCols = inputFile.nextInt();
+		NUM_GENS = inputFile.nextInt();
+		NUM_ROWS = inputFile.nextInt();
+		NUM_COLS = inputFile.nextInt();
 		inputFile.nextLine();
-		initArray = new Cell[numRows][numCols];
+		initArray = new Cell[NUM_ROWS][NUM_COLS];
 		
 			
-		for(int i = 0; i < numRows; i++){
+		for(int i = 0; i < NUM_ROWS; i++){
 			tempLine = inputFile.nextLine();
-			for (int j = 0; j< numCols; j++){
+			for (int j = 0; j< NUM_COLS; j++){
 					Cell newCell = new Cell();
 					initArray[i][j] = newCell;
 					currChar = tempLine.charAt(j);
